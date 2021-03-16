@@ -3,11 +3,11 @@ VALUES ('John', 'Manack', 'jmnck28@gmail.com', 'password');
 
 INSERT INTO activities (title, details, is_complete, is_billable, user_reference)
 VALUES
-('Leslie Knope Return', 'Form 1040 Preparation', FALSE, FALSE, 1),
-('Ron Swanson Return', 'Form 1065 Preparation', FALSE, FALSE, 1),
-('April Ludgate Return', 'Form 706 Preparation', FALSE, FALSE, 1),
-('Tom Haverford Project', 'Rent vs Buy Analysis', FALSE, FALSE, 1),
-('Andy Dwyer Return', 'Form 1120-S', FALSE, FALSE, 1);
+('Leslie Knope Return', 'Form 1040 Preparation', FALSE, TRUE, 1),
+('Ron Swanson Return', 'Form 1065 Preparation', FALSE, TRUE, 1),
+('April Ludgate Return', 'Form 706 Preparation', FALSE, TRUE, 1),
+('Tom Haverford Project', 'Rent vs Buy Analysis', FALSE, TRUE, 1),
+('Andy Dwyer Return', 'Form 1120-S Preparation', FALSE, TRUE, 1);
 
 INSERT INTO nested_notes (note_entry, activity_reference)
 VALUES
