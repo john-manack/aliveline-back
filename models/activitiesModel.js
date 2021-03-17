@@ -32,6 +32,36 @@ class ActivitiesModel {
         }
     }
 
+    static async addActivity(title, details, is_billable, user_id) {
+        const response = await db.result(`
+            INSERT INTO activities (title, details, is_complete, is_billable, user_reference)
+            VALUES
+            ($1, $2, FALSE, $3, $4)
+        `, 
+            [title, details, is_billable, user_id]
+        );
+        return response;
+    }
+
+    static async modifyIsComplete(boolean, activity_id) {
+        const response = await db.result(`
+            UPDATE activities
+            SET is_complete = $1
+            WHERE id = $2
+        `,
+            [boolean, activity_id]);
+        return response;
+    }
+
+    static async modifyIsBillable(boolean, activity_id) {
+        const response = await db.result(`
+            UPDATE activities
+            SET is_billable = $1
+            WHERE id = $2
+        `,
+            [boolean, activity_id]);
+        return response;
+    }
 
 
 }
