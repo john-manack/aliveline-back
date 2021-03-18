@@ -63,6 +63,16 @@ class ActivitiesModel {
         return response;
     }
 
+    static async addNote(note_entry, activity_id) {
+        const response = await db.result(`
+            INSERT INTO nested_notes (note_entry, activity_reference)
+            VALUES
+            ($1, $2)
+        `,
+            [note_entry, activity_id]
+        );
+        return response;
+    }
 
 }
 

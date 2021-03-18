@@ -32,7 +32,7 @@ router.get('/:activity_id', async (req, res) => {
 });
 
 // Post new activity (tested and functioning)
-router.post('/add', async (req, res) => {
+router.post('/addActivity', async (req, res) => {
     const { title, details, is_billable } = req.body;
     // the constant below is a placeholder
     const user_id = 1;
@@ -63,6 +63,20 @@ router.post('/modifyIsBillable', async (req, res) => {
     const { boolean, activity_id } = req.body;
 
     const response = await activitiesModel.modifyIsBillable(boolean, activity_id);
+    if (response.rowCount >= 1) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(500);
+    }
+})
+
+// Post a new note to an activity
+router.post('/addNote', async (req, res) => {
+    const { note_entry, activity_id } = req.body;
+
+    const response = await activitiesModel.addNote(note_entry, activity_id);
+
+
     if (response.rowCount >= 1) {
         res.sendStatus(200);
     } else {
