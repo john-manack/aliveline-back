@@ -48,11 +48,11 @@ router.post('/add', async (req, res) => {
 
 // Post a change to 'is_complete' (tested and functioning)
 router.post('/modifyIsComplete', async (req, res) => {
-    const { boolean, activity_id } = req.params;
+    const { boolean, activity_id } = req.body;
 
     const response = await activitiesModel.modifyIsComplete(boolean, activity_id);
     if (response.rowCount >= 1) {
-        res.redirect('back')
+        res.sendStatus(200);
     } else {
         res.sendStatus(500);
     }
@@ -60,11 +60,11 @@ router.post('/modifyIsComplete', async (req, res) => {
 
 // Post a change to 'is_billable' (tested and functioning)
 router.post('/modifyIsBillable', async (req, res) => {
-    const { boolean, activity_id } = req.params;
+    const { boolean, activity_id } = req.body;
 
     const response = await activitiesModel.modifyIsBillable(boolean, activity_id);
     if (response.rowCount >= 1) {
-        res.redirect('back')
+        res.sendStatus(200);
     } else {
         res.sendStatus(500);
     }
