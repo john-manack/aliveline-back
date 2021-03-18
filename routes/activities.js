@@ -33,14 +33,14 @@ router.get('/:activity_id', async (req, res) => {
 
 // Post new activity (tested and functioning)
 router.post('/add', async (req, res) => {
-    const { title, details, is_billable } = req.params;
+    const { title, details, is_billable } = req.body;
     // the constant below is a placeholder
     const user_id = 1;
 
     const response = await activitiesModel.addActivity(title, details, is_billable, user_id);
     
     if (response.rowCount >= 1) {
-        res.redirect('back')
+        res.sendStatus(200);
     } else {
         res.sendStatus(500);
     }
