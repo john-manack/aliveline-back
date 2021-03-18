@@ -76,6 +76,18 @@ router.post('/addNote', async (req, res) => {
 
     const response = await activitiesModel.addNote(note_entry, activity_id);
 
+    if (response.rowCount >= 1) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(500);
+    }
+})
+
+// Post a new hours entry to an activity
+router.post('/addHours', async (req, res) => {
+    const { hours_entry, hours_description, activity_id } = req.body;
+
+    const response = await activitiesModel.addHours(hours_entry, hours_description, activity_id);
 
     if (response.rowCount >= 1) {
         res.sendStatus(200);

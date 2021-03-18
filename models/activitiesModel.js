@@ -74,6 +74,17 @@ class ActivitiesModel {
         return response;
     }
 
+    static async addHours(hours_entry, hours_description, activity_id) {
+        const response = await db.result(`
+            INSERT INTO nested_hours (hours_entry, hours_description, activity_reference)
+            VALUES
+            ($1, $2, $3)
+        `,
+            [hours_entry, hours_description, activity_id]
+        );
+        return response;
+    }
+
 }
 
 module.exports = ActivitiesModel;

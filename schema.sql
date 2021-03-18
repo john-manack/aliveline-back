@@ -23,7 +23,7 @@ CREATE TABLE nested_notes (
 
 CREATE TABLE nested_hours (
     id serial PRIMARY KEY,
-    hours_entry integer,
+    hours_entry float,
     hours_description varchar(2000),
     activity_reference integer REFERENCES activities (id)
 );
