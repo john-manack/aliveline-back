@@ -10,7 +10,7 @@ class ActivitiesModel {
     static async getActivitiesList(user_id) {
         const response = await db.any(`
             SELECT * FROM activities WHERE user_reference = ${user_id}
-            ORDER BY id ASC;
+            ORDER BY is_complete ASC, id;
         `);
         return response;
     }
