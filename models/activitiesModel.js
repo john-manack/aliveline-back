@@ -7,10 +7,11 @@ class ActivitiesModel {
         this.activity_id = activity_id;
     }
 
-    static async getActivitiesList(user_id) {
+    static async getActivitiesList() {
         const response = await db.any(`
-            SELECT * FROM activities WHERE user_reference = ${user_id}
-            ORDER BY is_complete ASC, id;
+            SELECT *
+            FROM activities
+            ORDER BY is_complete ASC, activities.id;
         `);
         return response;
     }
@@ -32,13 +33,13 @@ class ActivitiesModel {
         }
     }
 
-    static async addActivity(title, details, is_billable, user_id) {
+    static async addActivity(title, details, is_billable, user_sub) {
         const response = await db.result(`
-            INSERT INTO activities (title, details, is_complete, is_billable, user_reference)
+            INSERT INTO activities (title, details, is_complete, is_billable, user_sub)
             VALUES
             ($1, $2, FALSE, $3, $4)
         `, 
-            [title, details, is_billable, user_id]
+            [title, details, is_billable, user_sub]
         );
         return response;
     }
@@ -57,6 +58,16 @@ class ActivitiesModel {
         const response = await db.result(`
             UPDATE activities
             SET is_billable = $1
+            WHERE id = $2
+        `,
+            [boolean, activity_id]);
+        return response;
+    }
+
+    static async modifyIsFavorite(boolean, activity_id) {
+        const response = await db.result(`
+            UPDATE activities
+            SET is_favorite = $1
             WHERE id = $2
         `,
             [boolean, activity_id]);
