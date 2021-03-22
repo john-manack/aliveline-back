@@ -1,9 +1,12 @@
 CREATE TABLE user_info (
     id serial PRIMARY KEY,
-    first_name varchar(200),
-    last_name varchar(200),
+    given_name varchar(200),
+    family_name varchar(200),
+    nickname varchar (200),
+    name varchar (300),
+    picture varchar(2000),
     email varchar (200),
-    password varchar(2000)
+    sub varchar (200)
 );
 
 CREATE TABLE activities (

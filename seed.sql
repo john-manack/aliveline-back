@@ -1,5 +1,5 @@
-INSERT INTO user_info (first_name, last_name, email, password)
-VALUES ('John', 'Manack', 'jmnck28@gmail.com', 'password');
+INSERT INTO user_info (given_name, family_name, nickname, name, picture, email, sub)
+VALUES ('John', 'Manack', 'jmnck28', 'John Manack', 'https://lh3.googleusercontent.com/a-/AOh14Gg0XNMlJiLLOqosNRjwepxQ-Rg5TwDwbTqT44ctpw=s96-c','jmnck28@gmail.com', 'google-oauth2|106823713440282669958');
 
 INSERT INTO activities (title, details, is_complete, is_billable, user_reference)
 VALUES
