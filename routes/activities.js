@@ -98,4 +98,43 @@ router.post('/addHours', async (req, res) => {
     }
 })
 
+// Post - delete a note
+router.post('/deleteNote', async (req, res) => {
+    const { note_id } = req.body;
+
+    const response = await activitiesModel.deleteNote(note_id);
+
+    if (response.rowCount >= 1) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(500);
+    }
+})
+
+// Post - delete an hours entry
+router.post('/deleteHours', async (req, res) => {
+    const { hours_id } = req.body;
+
+    const response = await activitiesModel.deleteHours(hours_id);
+
+    if (response.rowCount >= 1) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(500);
+    }
+})
+
+// Post - delete activity
+router.post('/deleteActivity', async (req, res) => {
+    // const { activity_id } = req.body;
+    const activity_id = 10;
+    const { activityDeleteResponse } = await activitiesModel.deleteActivity(activity_id);
+
+    if (activityDeleteResponse.rowCount >= 1) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(500);
+    }
+})
+
 module.exports = router;

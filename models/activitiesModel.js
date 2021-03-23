@@ -21,10 +21,10 @@ class ActivitiesModel {
             SElECT * FROM activities WHERE id = ${activity_id}
         `)
         const notesData = await db.any(`
-            SElECT note_entry, activity_reference FROM nested_notes WHERE activity_reference = ${activity_id}
+            SElECT * FROM nested_notes WHERE activity_reference = ${activity_id}
         `)
         const hoursData = await db.any(`
-            SElECT hours_entry, hours_description, activity_reference FROM nested_hours WHERE activity_reference = ${activity_id}
+            SElECT * FROM nested_hours WHERE activity_reference = ${activity_id}
         `)
         return {
             activityData,
@@ -94,6 +94,42 @@ class ActivitiesModel {
             [hours_entry, hours_description, activity_id]
         );
         return response;
+    }
+
+    static async deleteNote(note_id) {
+        const response = await db.result(`
+            DELETE FROM nested_notes
+            WHERE id = ${note_id}
+        `,);
+        return response;
+    }
+
+    static async deleteHours(hours_id) {
+        const response = await db.result(`
+            DELETE FROM nested_hours
+            WHERE id = ${hours_id}
+        `,);
+        return response;
+    }
+
+    static async deleteActivity(activity_id) {
+        const notesDeleteResponse = await db.result(`
+            DELETE FROM nested_notes
+            WHERE activity_reference = ${activity_id}
+        `,);
+        const hoursDeleteResponse = await db.result(`
+            DELETE FROM nested_hours
+            WHERE activity_reference = ${activity_id}
+        `,);
+        const activityDeleteResponse = await db.result(`
+            DELETE FROM activities
+            WHERE id = ${activity_id}
+        `)
+        return {
+            notesDeleteResponse,
+            hoursDeleteResponse,
+            activityDeleteResponse
+        }
     }
 
 }
