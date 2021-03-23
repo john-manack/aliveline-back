@@ -126,8 +126,7 @@ router.post('/deleteHours', async (req, res) => {
 
 // Post - delete activity
 router.post('/deleteActivity', async (req, res) => {
-    // const { activity_id } = req.body;
-    const activity_id = 10;
+    const { activity_id } = req.body;
     const { activityDeleteResponse } = await activitiesModel.deleteActivity(activity_id);
 
     if (activityDeleteResponse.rowCount >= 1) {
