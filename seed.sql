@@ -5,7 +5,8 @@ VALUES
 ('April Ludgate Return', 'Form 706 Preparation', FALSE, TRUE, FALSE, 'google-oauth2|106823713440282669958'),
 ('Tom Haverford Project', 'Rent vs Buy Analysis', FALSE, TRUE, FALSE, 'google-oauth2|106823713440282669958'),
 ('Andy Dwyer Return', 'Form 1120-S Preparation', FALSE, TRUE, FALSE, 'google-oauth2|106823713440282669958'),
-('Michael Scott Return', 'Form 1120-S Preparation', FALSE, TRUE, FALSE, 'auth0|6058ec908a24d70070efda17');
+('Michael Scott Return', 'Form 1120-S Preparation', FALSE, TRUE, FALSE, 'auth0|6058ec908a24d70070efda17'),
+('Jan Levenson', 'Form 1040 Preparation', FALSE, TRUE, FALSE, 'auth0|6058ec908a24d70070efda17');
 
 INSERT INTO nested_notes (note_entry, activity_reference)
 VALUES
