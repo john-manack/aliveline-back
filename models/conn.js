@@ -7,7 +7,7 @@ const host = "queenie.db.elephantsql.com",
 
 const pgp = require('pg-promise')({
     query: function (event) {
-        console.log('QUERY: ', event.query)
+        console.log('a query was run')
     }
 });
 
