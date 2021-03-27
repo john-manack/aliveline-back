@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const HTTP = require('http');
 
-const HOSTNAME = '127.0.0.1',
+const HOSTNAME = '0.0.0.0',
     PORT = process.env.PORT || 3030;
 
 const express = require('express'),
